@@ -17,9 +17,10 @@
                     <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>
             </t>
             <div class="page">
-                <div class="header">
-                    <img src='/formato_pedido/static/img/lightweb-media-logo.png' style="max-height:45px;" class="rounded float-right"/>
-                </div>
+             
+            <t t-call="external_layout_header_inherit_cr" />
+                   
+           
                 <font style="font-family:'Inter';">
                     <div class="row">
                         <div style="position:relative;top:20px;">
@@ -229,5 +230,17 @@
             </t>
         </t>
     </template>
+
+
+<template id="external_layout_header_inherit_cr" >
+            <xpath expr="//div[@class='header']" position="replace">
+                <div class="header">
+           
+                     <img  t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height:45px;" class="rounded float-right"/>
+                     
+                </div>
+            </xpath>
+        </template>
+
   </data>
 </odoo>
